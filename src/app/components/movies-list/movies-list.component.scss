@@ -1,0 +1,29 @@
+@import "~src/sass/variables";
+.main {
+  background: lighten($color-bg, 20%);
+  min-height: calc(100vh - 5.9rem);
+
+  &--search {
+    padding: 1em 3%;
+    label {
+      max-width: 600px;
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      margin: auto;
+      padding: 0.5em 1em;
+      border-radius: 2em;
+      box-shadow: 0 0 10px #444;
+      background: #fff;
+    }
+    img {
+      height: 2em;
+      margin-right: 0.5em;
+    }
+    input {
+      background: none;
+      border: none;
+      width: 100%;
+    }
+  }
+}

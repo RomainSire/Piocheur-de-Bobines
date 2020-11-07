@@ -18,14 +18,14 @@
     flex-flow: row nowrap;
     align-items: center;
     img {
-      height: 3em;
+      height: 3rem;
     }
     h1 {
-      font-size: 2.5em;
+      font-size: 2.5rem;
     }
   }
   &--nav-toggle {
-    font-size: 2em;
+    font-size: 2rem;
     cursor: pointer;
   }
 }
@@ -41,6 +41,11 @@
   transition: 0.5s;
   padding-top: 3em;
   text-align:center;
+  opacity: 0;
+  &__visible {
+    width: 100%;
+    opacity: 1;
+  }
   &--close {
     position: absolute;
     top: 0;

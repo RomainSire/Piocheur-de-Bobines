@@ -13,11 +13,10 @@ export class HeaderComponent implements OnInit {
   }
 
   public onOpenNav(): void {
-    document.getElementById('navigation').style.width = "100%";
+    document.getElementById('navigation').classList.add('navigation__visible');
   }
   public onCloseNav(): void {
-    document.getElementById('navigation').style.width = "0";
-    
+    document.getElementById('navigation').classList.remove('navigation__visible');
   }
 
 }
