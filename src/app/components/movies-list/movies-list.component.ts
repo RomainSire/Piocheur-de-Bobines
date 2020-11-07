@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TMDBService } from "../../services/tmdb.service";
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-movies-list',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviesListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private tmdbService: TMDBService
+  ) { }
 
   ngOnInit(): void {
+    this.getPopularMovies();
+  }
+
+  private getPopularMovies() {
+    this.tmdbService.getMoviesList(`${environment.databaseUrl}/trending/movie/week?api_key=${environment.APIKey}&language=fr&page=1`)
+    .subscribe(
+      (response: any) => {        
+        console.log(response);
+      }
+    )
   }
 
 }
