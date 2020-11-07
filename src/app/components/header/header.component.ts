@@ -12,4 +12,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public onOpenNav(): void {
+    document.getElementById('navigation').style.width = "100%";
+  }
+  public onCloseNav(): void {
+    document.getElementById('navigation').style.width = "0";
+    
+  }
+
 }

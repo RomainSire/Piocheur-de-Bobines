@@ -1,20 +1,25 @@
-<header>
-  <div class="wrapper">
+<header class="header">
+  <div class="header--wrapper">
     <div class="header--title">
       <img src="./assets/images/pickaxe.svg" alt="logo de Piocheur de Bobines">
-      <h1>Piocheur de Bobines</h1>
+      <h1><a href="#">Piocheur de Bobines</a></h1>
     </div>
-    <div class="header--nav-btn">
+    <div class="header--nav-toggle" (click)="onOpenNav()">
       &#9776;
     </div>
   </div>
   <nav id="navigation" class="navigation">
-    <a href="#" class="navigation--close">&times;</a>
-    <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">Clients</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
+    <a href="#" class="navigation--close" (click)="onCloseNav()">&times;</a>
+    <div class="navigation--wrapper">
+      <h3>Genre</h3>
+      <ul>
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Animation</a></li>
+        <li><a href="#">Aventure</a></li>
+        <li><a href="#">Comédie</a></li>
+        <li><a href="#">Drame</a></li>
+        <li><a href="#">Thriller</a></li>
+      </ul>
+    </div>
   </nav>
 </header>

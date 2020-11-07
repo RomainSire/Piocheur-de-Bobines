@@ -1,6 +1,69 @@
 @import "~src/sass/variables";
 
-header {
+.header {
   background: $color-bg;
   color: $color-text;
+  &--wrapper {
+    max-width: $size-wrap;
+    margin: auto;
+    padding: 0 3%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    color: $color-headings;
+  }
+  &--title{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    img {
+      height: 3em;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+  }
+  &--nav-toggle {
+    font-size: 2em;
+    cursor: pointer;
+  }
+}
+.navigation {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: $color-bg;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 3em;
+  text-align:center;
+  &--close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2em;
+    padding: 1em;
+  }
+  h3 {
+    font-family: $font-headings;
+    font-size: 2em;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1.3em;
+  }
+  li {
+    margin-top: 0.7em;
+  }
+  a{
+    transition: 0.3s;
+    &:hover {
+      color: $color-headings;
+    }
+  }
 }
