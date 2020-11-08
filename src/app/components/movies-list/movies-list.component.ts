@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import { TMDBService } from "../../services/tmdb.service";
 import { environment } from '../../../environments/environment';
 
@@ -17,11 +19,16 @@ export class MoviesListComponent implements OnInit {
   public totalPages: number;
 
   constructor(
-    private tmdbService: TMDBService
+    private tmdbService: TMDBService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.getPopularMovies();
+    // subscribe() pour recharger le composant à chaque changement de paramètres d'url
+    this.route.params.subscribe(params => {
+      this.page = +params.page ? +params.page : 1;
+      this.getPopularMovies();
+    });
   }
 
   private getPopularMovies(): void {
@@ -32,7 +39,6 @@ export class MoviesListComponent implements OnInit {
       if (response.error) {
         console.log("Erreur: impossible de charger la liste de films");
       } else {
-        this.page = response.page;
         this.totalPages = response.total_pages;
         this.movies = response.results;
         this.setPageNumber();
@@ -47,9 +53,5 @@ export class MoviesListComponent implements OnInit {
     for (let i = minPage; i < maxPage; i++) {
       this.pageNumbers.push(i);      
     }
-  }
-  public changePage(newPage) {
-    this.page = newPage;
-    this.getPopularMovies();
   }
 }
