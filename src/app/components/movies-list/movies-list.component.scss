@@ -4,7 +4,7 @@
   min-height: calc(100vh - 5.9rem);
 
   &--search {
-    padding: 1em 3%;
+    padding: 3em 3% 1em 3%;
     label {
       max-width: 600px;
       display: flex;
@@ -27,9 +27,18 @@
     }
   }
   &--list {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
+    h2 {
+      color: $color-headings;
+      text-align: center;
+      font-family: $font-headings;
+      font-weight: 500;
+      font-size: 2em;
+    }
+    &--wrapper {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+    }
     &--movie {
       width: 200px;
       text-align: center;
@@ -76,6 +85,7 @@
   }
   &--loader {
     position: absolute;
+    z-index: 100;
     top: 0;
     right: 0;
     bottom: 0;

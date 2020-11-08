@@ -6,13 +6,17 @@
     </label>
   </form>
   <div class="main--list">
-    <figure class="main--list--movie" *ngFor="let movie of movies">
-      <img class="main--list--movie--image" loading="lazy" src="https://image.tmdb.org/t/p/w200/{{movie.poster_path}}" alt="Affiche du film {{movie.title}}">
-      <figcaption>
-        <p class="main--list--movie--title">{{movie.title}}</p>
-        <p class="main--list--movie--year">{{movie.release_date | date: 'y'}}</p>
-      </figcaption>
-    </figure>
+    <h2>{{pageTitle}}</h2>
+    <div class="main--list--wrapper">
+      <figure class="main--list--movie" *ngFor="let movie of movies">
+        <img class="main--list--movie--image" loading="lazy" src="https://image.tmdb.org/t/p/w200/{{movie.poster_path}}" alt="Affiche du film {{movie.title}}">
+        <figcaption>
+          <p class="main--list--movie--title">{{movie.title}}</p>
+          <p class="main--list--movie--year">{{movie.release_date | date: 'y'}}</p>
+        </figcaption>
+      </figure>
+    </div>
+    
   </div>
   <div class="main--page">
     <ul>

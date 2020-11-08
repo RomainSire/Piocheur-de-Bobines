@@ -6,7 +6,7 @@ import { MoviesListComponent } from "./components/movies-list/movies-list.compon
 const routes: Routes = [
   { path: '', component: MoviesListComponent },
   { path: 'tendance/:page', component: MoviesListComponent },
-  { path: 'genre/:genre_id/:page', component: MoviesListComponent },
+  { path: 'genre/:genre/:page', component: MoviesListComponent },
   { path: '**', redirectTo: '' }
 ];
 

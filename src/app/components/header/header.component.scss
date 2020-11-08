@@ -35,15 +35,16 @@
   position: fixed;
   z-index: 1;
   top: 0;
-  left: 0;
-  background: $color-bg;
+  right: 0;
+  background: $color-bg-transparent;
+  box-shadow: 0 0 15px #333;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 3em;
   text-align:center;
   opacity: 0;
   &__visible {
-    width: 100%;
+    width: 350px;
     opacity: 1;
   }
   &--close {
