@@ -17,13 +17,13 @@
   <div class="main--page">
     <ul>
       <li *ngIf="page !== 1">
-        <a routerLink="/tendance/{{page-1}}">prec.</a>
+        <a routerLink="{{pageBaseUri}}{{page-1}}">prec.</a>
       </li>
       <li *ngFor="let pageNumber of pageNumbers" [ngClass]="pageNumber === page ? 'currentPage' : ''">
-        <a routerLink="/tendance/{{pageNumber}}">{{pageNumber}}</a>
+        <a routerLink="{{pageBaseUri}}{{pageNumber}}">{{pageNumber}}</a>
       </li>
       <li *ngIf="page !== totalPages">
-        <a routerLink="/tendance/{{page+1}}">suiv.</a>
+        <a routerLink="{{pageBaseUri}}{{page+1}}">suiv.</a>
       </li>
     </ul>
   </div>

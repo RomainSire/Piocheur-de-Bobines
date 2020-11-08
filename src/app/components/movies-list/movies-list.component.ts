@@ -17,6 +17,7 @@ export class MoviesListComponent implements OnInit {
   public page = 1;
   public pageNumbers= [];
   public totalPages: number;
+  public pageBaseUri: string;
 
   constructor(
     private tmdbService: TMDBService,
@@ -27,14 +28,22 @@ export class MoviesListComponent implements OnInit {
     // subscribe() pour recharger le composant à chaque changement de paramètres d'url
     this.route.params.subscribe(params => {
       this.page = +params.page ? +params.page : 1;
-      this.getPopularMovies();
+
+      if (params.genre_id) {
+        const url = `${environment.databaseUrl}/discover/movie?api_key=${environment.APIKey}&language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.page}&with_genres=${params.genre_id}`;
+        this.getPopularMovies(url);
+        this.pageBaseUri = `/genre/${params.genre_id}/`;
+      } else {
+        const url = `${environment.databaseUrl}/trending/movie/week?api_key=${environment.APIKey}&language=fr&page=${this.page}`;
+        this.getPopularMovies(url);
+        this.pageBaseUri = `/tendance/`;
+      }
     });
   }
-
-  private getPopularMovies(): void {
+  private getPopularMovies(url): void {
     const loader = document.getElementById('loader');
     loader.classList.remove('hidden');
-    this.tmdbService.getMoviesList(`${environment.databaseUrl}/trending/movie/week?api_key=${environment.APIKey}&language=fr&page=${this.page}`)
+    this.tmdbService.getMoviesList(url)
     .subscribe((response: TMDBMovieList) => {
       if (response.error) {
         console.log("Erreur: impossible de charger la liste de films");
