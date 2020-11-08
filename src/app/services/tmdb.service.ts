@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { TMDBMovieList } from "../interfaces/tmdbMovieList.interface";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,11 +14,10 @@ export class TMDBService {
     private httpClient: HttpClient
   ) { }
 
-  public getMoviesList(url: string): any {
+  public getMoviesList(url: string): Observable<TMDBMovieList> {
     return this.httpClient.get(url)
-      .pipe(catchError(res => {
-        return of([]);
+      .pipe(catchError(err => {
+        return of(err);
       }))
   }
-
 }

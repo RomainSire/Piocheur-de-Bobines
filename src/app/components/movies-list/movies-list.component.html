@@ -6,6 +6,33 @@
     </label>
   </form>
   <div class="main--list">
-
+    <figure class="main--list--movie" *ngFor="let movie of movies">
+      <img class="main--list--movie--image" loading="lazy" src="https://image.tmdb.org/t/p/w200/{{movie.poster_path}}" alt="Affiche du film {{movie.title}}">
+      <figcaption>
+        <p class="main--list--movie--title">{{movie.title}}</p>
+        <p class="main--list--movie--year">{{movie.release_date | date: 'y'}}</p>
+      </figcaption>
+    </figure>
+  </div>
+  <div class="main--page">
+    <ul>
+      <li *ngIf="page !== 1">
+        <a href="#" (click)="changePage(page-1)">prec.</a>
+      </li>
+      <li *ngFor="let pageNumber of pageNumbers" [ngClass]="pageNumber === page ? 'currentPage' : ''">
+        <a href="#" (click)="changePage(pageNumber)">{{pageNumber}}</a>
+      </li>
+      <li *ngIf="page !== totalPages">
+        <a href="#" (click)="changePage(page+1)">suiv.</a>
+      </li>
+    </ul>
+  </div>
+  <div id="loader" class="main--loader hidden">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
 </main>
