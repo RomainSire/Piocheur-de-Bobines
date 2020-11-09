@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "piocheur-de-bobines"
+  },
+  "targets": {
+    "piocheur-de-bobines": {
+      "hosting": {
+        "frontend": [
+          "piocheur-de-bobines"
+        ]
+      }
+    }
+  }
+}
