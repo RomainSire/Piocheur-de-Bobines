@@ -1,1 +1,25 @@
-<p>movie-detail works!</p>
+<main class="main">
+  <button (click)="onGoBack()">Retour</button>
+  <div class="main--wrapper">
+    <img
+      class="main--image"
+      loading="lazy"
+      [src]="movie.backdrop_path === null ? './assets/images/no-image.jpg' : 'https://image.tmdb.org/t/p/w780/' + movie.backdrop_path"
+      alt="Image du film {{movie.title}}">
+    <div class="main--infos">
+      <h2 class="main--infos--title">{{movie.title}}</h2>
+      <h3 class="main--infos--subtitle">{{movie.tagline}}</h3>
+      <p class="main--infos--ranking">{{movie.vote_average}}/10</p>
+      <p class="main--infos--duration">Durée : {{movie.runtime}} min</p>
+      <p class="main--infos--date">Sorti le {{movie.release_date | date:'dd / MM / yyyy'}}</p>
+      <div class="main--infos--genres">
+        <p>Genres :</p>
+        <ul>
+          <li *ngFor="let genre of movie.genres">{{genre.name}}</li>
+        </ul>
+      </div>
+      <p class="main--infos--original">Titre original : {{movie.original_title}} ({{movie.original_language}})</p>
+      <p class="main--infos--overview">{{movie.overview}}</p>
+    </div>
+  </div>
+</main>
