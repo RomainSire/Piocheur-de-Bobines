@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { TMDBMovieList } from "../interfaces/tmdbMovieList.interface";
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

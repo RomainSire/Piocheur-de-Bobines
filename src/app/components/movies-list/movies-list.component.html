@@ -1,15 +1,15 @@
 <main class="main">
-  <form  class="main--search">
+  <form  class="main--search" [formGroup]="searchMovieForm" (ngSubmit)="onSearchSubmit()">
     <label for="search" aria-label="Rechercher une bobine">
       <img src="./assets/images/search-solid.svg" alt="logo de loupe">
-      <input type="text" id="search" placeholder="Rechercher une bobine...">
+      <input type="text" id="search" placeholder="Rechercher une bobine..." formControlName="searchTerm">
     </label>
   </form>
   <div class="main--list">
     <h2>{{pageTitle}}</h2>
     <div class="main--list--wrapper">
       <figure class="main--list--movie" *ngFor="let movie of movies">
-        <img class="main--list--movie--image" loading="lazy" src="https://image.tmdb.org/t/p/w200/{{movie.poster_path}}" alt="Affiche du film {{movie.title}}">
+        <img class="main--list--movie--image" loading="lazy" [src]="movie.poster_path === null ? './assets/images/no-poster.jpg' : 'https://image.tmdb.org/t/p/w200/' + movie.poster_path" alt="Affiche du film {{movie.title}}">
         <figcaption>
           <p class="main--list--movie--title">{{movie.title}}</p>
           <p class="main--list--movie--year">{{movie.release_date | date: 'y'}}</p>

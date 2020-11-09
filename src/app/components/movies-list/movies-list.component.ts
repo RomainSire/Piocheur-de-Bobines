@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TMDBService } from "../../services/tmdb.service";
 import { environment } from '../../../environments/environment';
@@ -31,20 +32,25 @@ export class MoviesListComponent implements OnInit {
     { id: 53, name: "Thriller" },
     { id: 37, name: "Western" },
   ];
+  public searchMovieForm: FormGroup
 
   constructor(
     private tmdbService: TMDBService,
     private route: ActivatedRoute,
     private router: Router,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
+    // initialisation du formulaire de recherche de film
+    this.initSearchMovieForm();
     // subscribe() pour recharger le composant à chaque changement de paramètres d'url
     this.route.params.subscribe(params => {
       // Numéro de page afficher
       this.page = +params.page ? +params.page : 1;
       // Détermination de ce qu'on veut afficher: tendances ou films par genre
       if (params.genre) {
+        // AFFICHAGE DES GENRES
         this.pageTitle = params.genre;
         this.pageBaseUri = `/genre/${params.genre}/`;
         const genre = this.genreCorrespondance.find(genre => genre.name === params.genre);
@@ -52,20 +58,29 @@ export class MoviesListComponent implements OnInit {
           this.router.navigate(['']);
         }
         const url = `${environment.databaseUrl}/discover/movie?api_key=${environment.APIKey}&language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.page}&with_genres=${genre.id}`;
-        this.getPopularMovies(url);
+        this.getMovieList(url);
+      } else if (params.term) {
+        // AFFICHAGE DE LA RECHERCHE
+        this.pageTitle = `Recherche : ${params.term.split('%20').join(' ')}`;
+        this.pageBaseUri = `/search/${params.term}/`;
+        const url = `${environment.databaseUrl}/search/movie?api_key=${environment.APIKey}&language=fr&query=${params.term}&page=${this.page}&include_adult=false`;  
+        this.getMovieList(url);
+        
       } else {
+        // AFFICHAGE DES TENDANCES
         this.pageTitle = "Tendances";
         this.pageBaseUri = `/tendance/`;
         const url = `${environment.databaseUrl}/trending/movie/week?api_key=${environment.APIKey}&language=fr&page=${this.page}`;
-        this.getPopularMovies(url);
+        this.getMovieList(url);
       }
+      
     });
   }
   /**
    * Récupère la liste de films que l'on souhaite afficher
    * @param url URL The Movie DataBase que l'on souhaite requeter
    */
-  private getPopularMovies(url: string): void {
+  private getMovieList(url: string): void {
     const loader = document.getElementById('loader');
     loader.classList.remove('hidden');
     this.tmdbService.getMoviesList(url)
@@ -87,8 +102,24 @@ export class MoviesListComponent implements OnInit {
     const minPage = this.page-5 < 1 ? 1 : this.page-5;
     const maxPage = this.page+5 > this.totalPages ? this.totalPages : this.page+5;
     this.pageNumbers = [];
-    for (let i = minPage; i < maxPage; i++) {
+    for (let i = minPage; i < maxPage+1; i++) {
       this.pageNumbers.push(i);      
     }
+  }
+  /**
+   * Recherche d'un film : initialisation du formulaire
+   */
+  private initSearchMovieForm(): void {
+    this.searchMovieForm = this.formBuilder.group({
+      searchTerm: ['', [Validators.required]]
+    });
+  }
+  /**
+   * Recherche d'un film : soumission du formulaire
+   */
+  public onSearchSubmit(): void {
+    const { searchTerm } = this.searchMovieForm.value;
+    const term = searchTerm.split(' ').join('%20');
+    this.router.navigate([`/search/${term}/1`]);
   }
 }
