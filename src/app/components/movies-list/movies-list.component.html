@@ -9,11 +9,13 @@
     <h2>{{pageTitle}}</h2>
     <div class="main--list--wrapper">
       <figure class="main--list--movie" *ngFor="let movie of movies">
-        <img class="main--list--movie--image" loading="lazy" [src]="movie.poster_path === null ? './assets/images/no-poster.jpg' : 'https://image.tmdb.org/t/p/w200/' + movie.poster_path" alt="Affiche du film {{movie.title}}">
-        <figcaption>
-          <p class="main--list--movie--title">{{movie.title}}</p>
-          <p class="main--list--movie--year">{{movie.release_date | date: 'y'}}</p>
-        </figcaption>
+        <a [routerLink]="'/movie/' + movie.id">
+          <img class="main--list--movie--image" loading="lazy" [src]="movie.poster_path === null ? './assets/images/no-poster.jpg' : 'https://image.tmdb.org/t/p/w200/' + movie.poster_path" alt="Affiche du film {{movie.title}}">
+          <figcaption>
+            <p class="main--list--movie--title">{{movie.title}}</p>
+            <p class="main--list--movie--year">{{movie.release_date | date: 'y'}}</p>
+          </figcaption>
+        </a>
       </figure>
     </div>
     

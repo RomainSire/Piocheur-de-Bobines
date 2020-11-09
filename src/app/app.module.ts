@@ -7,12 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MoviesListComponent } from './components/movies-list/movies-list.component';
+import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    MoviesListComponent
+    MoviesListComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,
