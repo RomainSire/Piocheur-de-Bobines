@@ -1,7 +1,7 @@
 @import "~src/sass/variables";
 .main {
   background: lighten($color-bg, 20%);
-  min-height: calc(100vh - 5.9rem);
+  min-height: calc(100vh - #{$size-header});
 
   &--search {
     padding: 3em 3% 1em 3%;

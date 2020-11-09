@@ -35,8 +35,6 @@ export class MovieDetailComponent implements OnInit {
           console.log("Erreur: impossible de charger le film");
         } else {
           this.movie = response;
-          console.log(this.movie);
-          
         }
       })
   }

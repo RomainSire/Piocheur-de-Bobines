@@ -4,6 +4,7 @@
   background: $color-bg;
   color: $color-text;
   &--wrapper {
+    height: $size-header;
     max-width: $size-wrap;
     margin: auto;
     padding: 0 3%;
