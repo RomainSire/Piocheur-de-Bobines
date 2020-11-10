@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { TMDBService } from "../../services/tmdb.service";
+import { LoaderService } from "../../services/loader.service";
 import { environment } from '../../../environments/environment';
 
 import { TMDBMovieList } from "../../interfaces/tmdbMovieList.interface";
@@ -44,6 +45,7 @@ export class MoviesListComponent implements OnInit {
 
   constructor(
     private tmdbService: TMDBService,
+    private loaderService: LoaderService,
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
@@ -89,8 +91,7 @@ export class MoviesListComponent implements OnInit {
    * @param url URL The Movie DataBase que l'on souhaite requeter
    */
   private getMovieList(url: string): void {
-    const loader = document.getElementById('loader');
-    loader.classList.remove('hidden');
+    this.loaderService.hidden = false;
     this.tmdbService.getMoviesList(url)
     .subscribe((response: TMDBMovieList) => {
       if (response.error) {
@@ -99,10 +100,8 @@ export class MoviesListComponent implements OnInit {
         this.totalPages = response.total_pages;
         this.movies = response.results;
         this.setPageNumber();
-        loader.classList.add('hidden');
-        console.log(this.movies);
-        
       }
+      this.loaderService.hidden = true;
     })
   }
   /**

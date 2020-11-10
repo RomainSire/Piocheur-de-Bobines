@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {Location} from '@angular/common';
 
 import { TMDBService } from "../../services/tmdb.service";
+import { LoaderService } from "../../services/loader.service";
 
 import { movieDetails } from "../../interfaces/movieDetails.interface";
 
@@ -18,6 +19,7 @@ export class MovieDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private tmdbService: TMDBService,
+    private loaderService: LoaderService,
     private location: Location
   ) { }
 
@@ -29,6 +31,7 @@ export class MovieDetailComponent implements OnInit {
   }
 
   private getMovieDetail(id:number) {
+    this.loaderService.hidden = false;
     this.tmdbService.getMovieDetail(id)
       .subscribe((response: movieDetails) => {
         if (response.error) {
@@ -36,6 +39,9 @@ export class MovieDetailComponent implements OnInit {
         } else {
           this.movie = response;
         }
+        window.setTimeout(() => {
+          this.loaderService.hidden = true;
+        }, 200);
       })
   }
 
