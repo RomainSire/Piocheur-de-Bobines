@@ -1,0 +1,24 @@
+@import "~src/sass/variables";
+.main {
+  background: lighten($color-bg, 20%);
+  min-height: calc(100vh - #{$size-header});
+  &--wrapper {
+    max-width: $size-wrap;
+    margin: auto;
+    padding: 0 3%;
+  }
+  h2 {
+    margin: 0;
+    padding: 2em 0 1em 0;
+    text-align: center;
+    font-family: $font-headings;
+    color: $color-headings;
+  }
+  &--image {
+    max-width: 800px;
+    margin: auto;
+    img {
+      width: 100%;
+    }
+  }
+}

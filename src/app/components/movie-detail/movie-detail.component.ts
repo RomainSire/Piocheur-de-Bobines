@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Location} from '@angular/common';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { TMDBService } from "../../services/tmdb.service";
 import { LoaderService } from "../../services/loader.service";
@@ -18,6 +19,7 @@ export class MovieDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private tmdbService: TMDBService,
     private loaderService: LoaderService,
     private location: Location
@@ -35,7 +37,7 @@ export class MovieDetailComponent implements OnInit {
     this.tmdbService.getMovieDetail(id)
       .subscribe((response: movieDetails) => {
         if (response.error) {
-          console.log("Erreur: impossible de charger le film");
+          this.router.navigate([`/404`]);
         } else {
           this.movie = response;
         }

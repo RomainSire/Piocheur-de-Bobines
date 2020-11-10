@@ -83,7 +83,6 @@ export class MoviesListComponent implements OnInit {
         const url = `${environment.databaseUrl}/trending/movie/week?api_key=${environment.APIKey}&language=fr&page=${this.page}`;
         this.getMovieList(url);
       }
-      
     });
   }
   /**
@@ -95,7 +94,7 @@ export class MoviesListComponent implements OnInit {
     this.tmdbService.getMoviesList(url)
     .subscribe((response: TMDBMovieList) => {
       if (response.error) {
-        console.log("Erreur: impossible de charger la liste de films");
+        this.router.navigate([`/404`]);
       } else {
         this.totalPages = response.total_pages;
         this.movies = response.results;

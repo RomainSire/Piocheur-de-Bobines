@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { MoviesListComponent } from "./components/movies-list/movies-list.component";
 import { MovieDetailComponent } from "./components/movie-detail/movie-detail.component";
+import { FourOhFourComponent } from "./components/four-oh-four/four-oh-four.component";
 
 const routes: Routes = [
   { path: '', component: MoviesListComponent },
@@ -10,6 +11,7 @@ const routes: Routes = [
   { path: 'genre/:genre/:page', component: MoviesListComponent },
   { path: 'search/:term/:page', component: MoviesListComponent },
   { path: 'movie/:id', component: MovieDetailComponent },
+  { path: '404', component: FourOhFourComponent },
   { path: '**', redirectTo: '' }
 ];
 
