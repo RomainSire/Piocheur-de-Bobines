@@ -43,11 +43,16 @@
       width: 200px;
       text-align: center;
       transition: transform 300ms;
+      margin: 1em;
+      @media screen and (max-width: 475px){
+        width: 40%;
+      }
       &:hover {
         transform: scale(1.05);
       }
       &--image {
         box-shadow: 0 0 10px #444;
+        width: 100%;
       }
       &--title {
         margin-bottom: 0;
