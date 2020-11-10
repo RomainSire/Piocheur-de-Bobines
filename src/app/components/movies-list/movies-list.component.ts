@@ -100,6 +100,8 @@ export class MoviesListComponent implements OnInit {
         this.movies = response.results;
         this.setPageNumber();
         loader.classList.add('hidden');
+        console.log(this.movies);
+        
       }
     })
   }

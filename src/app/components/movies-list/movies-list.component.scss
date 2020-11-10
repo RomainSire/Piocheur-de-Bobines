@@ -58,6 +58,24 @@
         font-style: italic;
         color: lighten($color-headings, 20%);
       }
+      &--figcaption {
+        position: relative;
+      }
+      &--star {
+        position: absolute;
+        height: 3em;
+        top: -2.5em;
+        right: 1em;
+        transform: translate(50%, -50%);
+      }
+      &--rate {
+        position: absolute;
+        top: -2.5em;
+        right: 1em;
+        transform: translate(40%, -50%);
+        margin: 0;
+        font-size: 0.9em;
+      }
     }
   }
   &--page {
