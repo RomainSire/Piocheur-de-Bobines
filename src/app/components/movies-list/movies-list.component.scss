@@ -43,7 +43,10 @@
       width: 200px;
       text-align: center;
       transition: transform 300ms;
-      margin: 1em;
+      margin: 1em 40px;
+      @media screen and (max-width: 600px){
+        margin: 1em;
+      }
       @media screen and (max-width: 475px){
         width: 40%;
       }
