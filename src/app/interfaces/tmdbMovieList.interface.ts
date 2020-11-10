@@ -1,9 +1,9 @@
-import { movie } from "./movie.interface";
+import { Movie } from './movie.interface';
 
 export interface TMDBMovieList {
-  page: number,
-  results: [movie],
-  total_pages: number,
-  total_results: number,
-  error?: object
+  page: number;
+  results: [Movie];
+  total_pages: number;
+  total_results: number;
+  error?: object;
 }

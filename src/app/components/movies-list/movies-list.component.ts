@@ -3,12 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { TMDBService } from "../../services/tmdb.service";
-import { LoaderService } from "../../services/loader.service";
+import { TMDBService } from '../../services/tmdb.service';
+import { LoaderService } from '../../services/loader.service';
 import { environment } from '../../../environments/environment';
 
-import { TMDBMovieList } from "../../interfaces/tmdbMovieList.interface";
-import { movie } from "../../interfaces/movie.interface";
+import { TMDBMovieList } from '../../interfaces/tmdbMovieList.interface';
+import { Movie } from '../../interfaces/movie.interface';
 
 @Component({
   selector: 'app-movies-list',
@@ -16,32 +16,32 @@ import { movie } from "../../interfaces/movie.interface";
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-  public movies: [movie];
+  public movies: [Movie];
   public page = 1;
-  public pageNumbers= [];
+  public pageNumbers = [];
   public totalPages: number;
   public pageBaseUri: string;
   public pageTitle: string;
   private genreCorrespondance = [
-    { id: 28, name: "Action" },
-    { id: 12, name: "Aventure" },
-    { id: 16, name: "Animation" },
-    { id: 35, name: "Comédie" },
-    { id: 80, name: "Crime" },
-    { id: 99, name: "Documentaire" },
-    { id: 18, name: "Drame" },
-    { id: 10751, name: "Familial" },
-    { id: 14, name: "Fantastique" },
-    { id: 36, name: "Histoire" },
-    { id: 27, name: "Horreur" },
-    { id: 9648, name: "Mystère" },
-    { id: 10749, name: "Romance" },
-    { id: 878, name: "Science-Fiction" },
-    { id: 53, name: "Thriller" },
-    { id: 10752, name: "Guerre" },
-    { id: 37, name: "Western" },
+    { id: 28, name: 'Action' },
+    { id: 12, name: 'Aventure' },
+    { id: 16, name: 'Animation' },
+    { id: 35, name: 'Comédie' },
+    { id: 80, name: 'Crime' },
+    { id: 99, name: 'Documentaire' },
+    { id: 18, name: 'Drame' },
+    { id: 10751, name: 'Familial' },
+    { id: 14, name: 'Fantastique' },
+    { id: 36, name: 'Histoire' },
+    { id: 27, name: 'Horreur' },
+    { id: 9648, name: 'Mystère' },
+    { id: 10749, name: 'Romance' },
+    { id: 878, name: 'Science-Fiction' },
+    { id: 53, name: 'Thriller' },
+    { id: 10752, name: 'Guerre' },
+    { id: 37, name: 'Western' },
   ];
-  public searchMovieForm: FormGroup
+  public searchMovieForm: FormGroup;
 
   constructor(
     private tmdbService: TMDBService,
@@ -63,7 +63,7 @@ export class MoviesListComponent implements OnInit {
         // AFFICHAGE DES GENRES
         this.pageTitle = params.genre;
         this.pageBaseUri = `/genre/${params.genre}/`;
-        const genre = this.genreCorrespondance.find(genre => genre.name === params.genre);
+        const genre = this.genreCorrespondance.find(genreFind => genreFind.name === params.genre);
         if (!genre) {
           this.router.navigate(['']);
         }
@@ -73,12 +73,11 @@ export class MoviesListComponent implements OnInit {
         // AFFICHAGE DE LA RECHERCHE
         this.pageTitle = `Recherche : ${params.term.split('%20').join(' ')}`;
         this.pageBaseUri = `/search/${params.term}/`;
-        const url = `${environment.databaseUrl}/search/movie?api_key=${environment.APIKey}&language=fr&query=${params.term}&page=${this.page}&include_adult=false`;  
+        const url = `${environment.databaseUrl}/search/movie?api_key=${environment.APIKey}&language=fr&query=${params.term}&page=${this.page}&include_adult=false`;
         this.getMovieList(url);
-        
       } else {
         // AFFICHAGE DES TENDANCES
-        this.pageTitle = "Tendances";
+        this.pageTitle = 'Tendances';
         this.pageBaseUri = `/tendance/`;
         const url = `${environment.databaseUrl}/trending/movie/week?api_key=${environment.APIKey}&language=fr&page=${this.page}`;
         this.getMovieList(url);
@@ -101,17 +100,17 @@ export class MoviesListComponent implements OnInit {
         this.setPageNumber();
       }
       this.loaderService.hidden = true;
-    })
+    });
   }
   /**
    * Définit la pagination à afficher en bas de la page
    */
   private setPageNumber(): void {
-    const minPage = this.page-5 < 1 ? 1 : this.page-5;
-    const maxPage = this.page+5 > this.totalPages ? this.totalPages : this.page+5;
+    const minPage = this.page - 5 < 1 ? 1 : this.page - 5;
+    const maxPage = this.page + 5 > this.totalPages ? this.totalPages : this.page + 5;
     this.pageNumbers = [];
-    for (let i = minPage; i < maxPage+1; i++) {
-      this.pageNumbers.push(i);      
+    for (let i = minPage; i < maxPage + 1; i++) {
+      this.pageNumbers.push(i);
     }
   }
   /**

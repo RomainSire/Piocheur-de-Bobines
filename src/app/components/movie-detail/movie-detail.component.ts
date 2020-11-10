@@ -3,10 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { TMDBService } from "../../services/tmdb.service";
-import { LoaderService } from "../../services/loader.service";
+import { TMDBService } from '../../services/tmdb.service';
+import { LoaderService } from '../../services/loader.service';
 
-import { movieDetails } from "../../interfaces/movieDetails.interface";
+import { MovieDetails } from '../../interfaces/movieDetails.interface';
 
 @Component({
   selector: 'app-movie-detail',
@@ -15,7 +15,7 @@ import { movieDetails } from "../../interfaces/movieDetails.interface";
 })
 export class MovieDetailComponent implements OnInit {
 
-  public movie: movieDetails;
+  public movie: MovieDetails;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,13 +29,13 @@ export class MovieDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       const id = +params.id;
       this.getMovieDetail(id);
-    })
+    });
   }
 
-  private getMovieDetail(id:number) {
+  private getMovieDetail(id: number): void {
     this.loaderService.hidden = false;
     this.tmdbService.getMovieDetail(id)
-      .subscribe((response: movieDetails) => {
+      .subscribe((response: MovieDetails) => {
         if (response.error) {
           this.router.navigate([`/404`]);
         } else {
@@ -44,10 +44,10 @@ export class MovieDetailComponent implements OnInit {
         window.setTimeout(() => {
           this.loaderService.hidden = true;
         }, 200);
-      })
+      });
   }
 
-  public onGoBack() {
+  public onGoBack(): void {
     this.location.back();
   }
 }
