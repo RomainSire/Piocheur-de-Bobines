@@ -59,7 +59,7 @@
     }
     strong {
       font-weight: bolder;
-      color: lighten($color-headings, 10%);
+      color: $color-text;
     }
     p {
       margin: 0.7em 0;
@@ -78,7 +78,7 @@
     }
     
     &--ranking {
-      color: $color-headings;
+      color: $color-text;
       text-align: center;
       img {
         height: 1em;
