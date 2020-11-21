@@ -4,12 +4,12 @@
       <img src="./assets/images/pickaxe.svg" alt="logo de Piocheur de Bobines">
       <h1><a routerLink="">Piocheur de Bobines</a></h1>
     </div>
-    <div class="header--nav-toggle" (click)="onOpenNav()">
+    <div class="header--nav-toggle" id="burgerIcon" (click)="onOpenNav()">
       &#9776;
     </div>
   </div>
   <nav id="navigation" class="navigation">
-    <a href="#" class="navigation--close" (click)="onCloseNav($event)">&times;</a>
+    <a href="#" class="navigation--close" id="closeNavIcon" (click)="onCloseNav($event)">&times;</a>
     <div class="navigation--wrapper">
       <h2>Genre</h2>
       <ul>

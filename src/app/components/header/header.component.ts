@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   public onOpenNav(): void {
     document.getElementById('navigation').classList.add('navigation__visible');
   }
-  public onCloseNav(e): void {
+  public onCloseNav(e: Event): void {
     e.preventDefault();
     document.getElementById('navigation').classList.remove('navigation__visible');
   }
