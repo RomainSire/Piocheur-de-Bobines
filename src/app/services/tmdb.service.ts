@@ -24,7 +24,7 @@ export class TMDBService {
   }
 
   public getMovieDetail(id: number): Observable<MovieDetails> {
-    const url = `${environment.databaseUrl}/movie/${id}?api_key=${environment.APIKey}&language=fr`;
+    const url = `${environment.databaseUrl}/movie/${id}?api_key=${environment.APIKey}&language=fr&append_to_response=videos`;
     return this.httpClient.get(url)
       .pipe(catchError(err => {
         return of(err);

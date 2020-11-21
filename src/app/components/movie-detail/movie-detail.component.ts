@@ -40,6 +40,8 @@ export class MovieDetailComponent implements OnInit {
           this.router.navigate([`/404`]);
         } else {
           this.movie = response;
+          console.log(this.movie);
+          
         }
         window.setTimeout(() => {
           this.loaderService.hidden = true;
