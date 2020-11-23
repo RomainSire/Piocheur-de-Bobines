@@ -66,9 +66,10 @@ export class MoviesListComponent implements OnInit {
         const genre = this.genreCorrespondance.find(genreFind => genreFind.name === params.genre);
         if (!genre) {
           this.router.navigate(['']);
-        }
-        const url = `${environment.databaseUrl}/discover/movie?api_key=${environment.APIKey}&language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.page}&with_genres=${genre.id}`;
+        } else {
+          const url = `${environment.databaseUrl}/discover/movie?api_key=${environment.APIKey}&language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=${this.page}&with_genres=${genre.id}`;
         this.getMovieList(url);
+        }
       } else if (params.term) {
         // AFFICHAGE DE LA RECHERCHE
         this.pageTitle = `Recherche : ${params.term.split('%20').join(' ')}`;
