@@ -18,6 +18,7 @@ interface ProductionCountry {
 interface Language {
   iso_639_1: string;
   name: string;
+  english_name?: string
 }
 
 export interface MovieDetails {
@@ -30,7 +31,7 @@ export interface MovieDetails {
     poster_path: string;
   };
   budget: number;
-  genres: [Genre];
+  genres: Array<Genre>;
   homepage: string;
   id: number;
   imdb_id: string;
@@ -39,12 +40,12 @@ export interface MovieDetails {
   overview: string;
   popularity: number;
   poster_path: string;
-  production_companies: [ProductionCompany];
-  production_countries: [ProductionCountry];
+  production_companies: Array<ProductionCompany>;
+  production_countries: Array<ProductionCountry>;
   release_date: string;
   revenue: number;
   runtime: number;
-  spoken_languages: [Language];
+  spoken_languages: Array<Language>;
   status: string;
   tagline: string;
   title: string;

@@ -16,7 +16,7 @@ import { Movie } from '../../interfaces/movie.interface';
   styleUrls: ['./movies-list.component.scss']
 })
 export class MoviesListComponent implements OnInit {
-  public movies: [Movie];
+  public movies: Array<Movie>;
   public page = 1;
   public pageNumbers = [];
   public totalPages: number;
