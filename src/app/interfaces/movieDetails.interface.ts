@@ -21,6 +21,17 @@ interface Language {
   english_name?: string
 }
 
+interface ResultVideos {
+  id: string;
+  iso_3166_1: string;​​​​
+  iso_639_1: string;​​​​
+  key: string;​​​​
+  name: string;​​​​
+  site: string;​​​​
+  size: number;​​​​
+  type: string;
+}
+
 export interface MovieDetails {
   adult: boolean;
   backdrop_path: string;
@@ -50,6 +61,9 @@ export interface MovieDetails {
   tagline: string;
   title: string;
   video: boolean;
+  videos: {
+    results:Array<ResultVideos>;
+  }
   vote_average: number;
   vote_count: number;
   error?: object;

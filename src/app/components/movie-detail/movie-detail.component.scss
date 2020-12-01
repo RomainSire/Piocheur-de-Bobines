@@ -38,31 +38,31 @@
   &--wrapper {
     @media screen and (min-width: $breakpoint){
       padding: 0 3%;
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: auto;
+      justify-items: center;
+      grid-template-areas: 
+      "img infos"
+      "trailer trailer";
     }
   }
   &--image {
+    grid-area: img;
+    align-self: center;
     width: 100%;
     max-width: 780px;
-    margin: 0 auto;
-    @media screen and (min-width: $breakpoint){
-      width: 50%;
-    }
   }
   &--infos {
+    grid-area: infos;
     padding: 1em;
-    @media screen and (min-width: $breakpoint){
-      padding: 0 1em;
-      width: 50%;
-    }
     strong {
       font-weight: bolder;
       color: $color-text;
     }
     p {
       margin: 0.7em 0;
+      font-size: 1rem;
     }
     &--title {
       margin: 0;
@@ -93,5 +93,35 @@
         content: "";
       }
     }
+  }
+  &--trailers {
+    grid-area: trailer;
+    justify-self: center;
+    width: 100%;
+    max-width: 1024px;
+    
+    h4 {
+      font-size: 1rem;
+      font-weight: bolder;
+      color: $color-text;
+      padding: 0 0 1em 1em;
+      margin: 0;
+      @media screen and (min-width: $breakpoint){
+        padding: 1em 0 1em 0;
+      }
+    }
+    &--container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    
   }
 }

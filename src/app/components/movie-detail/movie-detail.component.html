@@ -22,6 +22,12 @@
         <p><strong>Synopsis :</strong></p>
         <p class="main--infos--overview">{{movie.overview}}</p>
       </div>
+      <div class="main--trailers" *ngIf="trailerPath">
+        <h4>Bande-annonce :</h4>
+        <div class="main--trailers--container">
+          <iframe [src]="trailerPath" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
     </ng-container>
   </div>
   <button class="main--gobackbtn" (click)="onGoBack()"><img src="./assets/images/arrow-left.svg" alt=""> Retour</button>
