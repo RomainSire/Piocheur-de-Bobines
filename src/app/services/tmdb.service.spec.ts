@@ -181,6 +181,20 @@ describe("TMDBService", () => {
       "tagline": "Chaos. Confusion. Savon.",
       "title": "Fight Club",
       "video": false,
+      "videos": {
+        results: [
+          {
+            id: "string",
+            iso_3166_1: "string",
+            iso_639_1: "string",
+            key: "string",
+            name: "string",
+            site: "string",
+            size: 12,
+            type: "string",
+          }
+        ]
+      },
       "vote_average": 8.4,
       "vote_count": 20460
     };
