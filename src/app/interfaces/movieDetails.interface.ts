@@ -18,7 +18,7 @@ interface ProductionCountry {
 interface Language {
   iso_639_1: string;
   name: string;
-  english_name?: string
+  english_name?: string;
 }
 
 interface ResultVideos {
@@ -62,8 +62,8 @@ export interface MovieDetails {
   title: string;
   video: boolean;
   videos: {
-    results:Array<ResultVideos>;
-  }
+    results: Array<ResultVideos>;
+  };
   vote_average: number;
   vote_count: number;
   error?: object;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import {BrowserModule, DomSanitizer, SafeResourceUrl} from '@angular/platform-browser'
+import {BrowserModule, DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 import { TMDBService } from '../../services/tmdb.service';
 import { LoaderService } from '../../services/loader.service';

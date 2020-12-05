@@ -6,5 +6,5 @@ export interface TMDBMovieList {
   total_pages: number;
   total_results: number;
   error?: object;
-  ok?: boolean
+  ok?: boolean;
 }
