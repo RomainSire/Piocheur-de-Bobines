@@ -1,0 +1,11 @@
+<figure class="movie">
+  <a [routerLink]="'/movie/' + movie.id">
+    <img class="movie--image" loading="lazy" [src]="movie.poster_path === null ? './assets/images/no-poster.jpg' : 'https://image.tmdb.org/t/p/w200/' + movie.poster_path" alt="Affiche du film {{movie.title}}">
+    <figcaption class="movie--figcaption">
+      <p class="movie--title">{{movie.title}}</p>
+      <p class="movie--year">{{movie.release_date | date: 'y'}}</p>
+      <img class="movie--star" src="./assets/images/star-solid.svg" alt="">
+      <p class="movie--rate" aria-label="notation">{{movie.vote_average}}</p>
+    </figcaption>
+  </a>
+</figure>

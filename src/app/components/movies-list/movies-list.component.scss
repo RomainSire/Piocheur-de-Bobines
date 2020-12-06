@@ -43,7 +43,7 @@
       width: 200px;
       text-align: center;
       transition: transform 300ms;
-      margin: 1em 40px;
+      margin: 1em 3%;
       @media screen and (max-width: 600px){
         margin: 1em;
       }
@@ -52,37 +52,6 @@
       }
       &:hover {
         transform: scale(1.05);
-      }
-      &--image {
-        box-shadow: 0 0 10px #444;
-        width: 100%;
-      }
-      &--title {
-        margin-bottom: 0;
-        color: $color-text;
-      }
-      &--year {
-        margin: 0;
-        font-style: italic;
-        color: $color-text;
-      }
-      &--figcaption {
-        position: relative;
-      }
-      &--star {
-        position: absolute;
-        height: 3em;
-        top: -2.5em;
-        right: 1em;
-        transform: translate(50%, -50%);
-      }
-      &--rate {
-        position: absolute;
-        top: -2.5em;
-        right: 1em;
-        transform: translate(40%, -50%);
-        margin: 0;
-        font-size: 0.9em;
       }
     }
   }
